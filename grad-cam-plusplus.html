@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Explainable AI</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Pretained Image Recognition Models.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon-precomposed" href="media/favicon.png">
+    <link rel="icon" href="media/favicon.png">
+    <link rel="mask-icon" href="media/favicon.svg" color="rgb(36,38,58)">
+    <link rel="shortcut icon" href="media/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="page page-style-guide preload">
+
+    <header class="header-main dark">
+        <nav>
+            <a href="index.html" class="logo" rel="home"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path d="M6.648 7.762c-.077-.11-.106-.245-.083-.376.024-.132.1-.248.21-.323l1.164-.8c1.536-1.076 3.406-1.486 5.25-1.16 3.82.673 6.373 4.32 5.704 8.113-.668 3.793-4.316 6.347-8.134 5.674-1.845-.326-3.462-1.35-4.485-2.813l-3.11-4.445c-.16-.23-.45-.33-.717-.245-.267.084-.45.33-.45.61C2 11.998 2 12 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2C8.94 2 6.202 3.374 4.368 5.538c-.735.86-.794 2.11-.146 3.036 1.475 2.136 4.138 5.942 4.138 5.942.675.965 1.685 1.605 2.852 1.81 2.396.424 4.684-1.168 5.107-3.564.42-2.396-1.185-4.674-3.58-5.097-1.167-.205-2.335.05-3.36.77-.84.585-1.994.38-2.58-.458l-.152-.215z" fill="currentColor"/></svg><span>Riots Team</span></a>
+            <div class="nav-toggle"></div>
+            <ul class="inline">
+                <li><a href="https://github.com/riotteams/tensorcam-" class="button button-primary button-m full-width-tablet" role="button">For GitHup Repositories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="bg-image-03 center dark overlay padding">
+            <div class="margin-bottom margin-top max-width-m">
+                <h1>Welcome</h1>
+                <p class="lead">Welcome to the TensorCAM documentation, a concise set of documentation that covers the basics of TensorCAM.</p>
+            </div>
+        </section>
+
+        <div class="padding">
+            <div class="row max-width-l">
+                <div class="col-one-fifth">
+                    <aside class="sidebar">
+                        <h6 class="sidebar-header">Explainable AI Methods</h6>
+
+                        <ul class="blank">
+
+                            <li><a href="index.html#getting-started">Getting Started</a></li>
+                            <li><a href="class-summaries.html#class-summaries">Class Summaries</a></li>
+                            <li><a href="cam.html#cam">CAM</a></li>
+                            <li><a href="grad-cam.html#grad-cam">GradCAM</a></li>
+                            <li><a href="hires-cam.html#hirescam">HiResCAM</a></li>
+                            <li><a href="grad-cam-element-wise.html#grad-cam-element-wise">GradCAMElementWise</a></li>
+                            <li><a href="grad-cam-plusplus.html#grad-cam-plusplus">GradCAM++</a></li>
+                            <li><a href="xgrad.html#xgrad-cam">XGradCAM</a></li>
+                            <li><a href="score-cam.html#score-cam">ScoreCAM</a></li>
+                            <li><a href="layer-cam.html#layer-cam">LayerCAM</a></li>
+                            <li><a href="ablation-cam.html#ablation-cam">Ablation-CAM	</a></li>
+                            <li><a href="fullgrad.html#fullgrad-cam">FullGrad-CAM	</a></li>
+                            <li><a href="SmoothGradCAM.html#SmoothGradCAM">SmoothGradCAM</a></li>
+                            <li><a href="smoothgradcampp.html#smoothgradcampp">smoothgradcampp </a></li>
+                            <li><a href="SmoothHiresCAM.html#SmoothHiresCAM">SmoothHiresCAM	</a></li>
+                            <li><a href="SmoothElementWise.html#SmoothElementWise">SmoothElementWise</a></li>
+                        </ul>
+
+                    </aside>
+                </div>
+                <div class="col-four-fifths">
+
+                    <section id="grad-cam-plusplus" class="anchor">
+
+                        <h4>GradCAM++</h4>
+                        <p class="paragraph">GradCAM++ (Gradient-weighted Class Activation Mapping++) is a technique used to generate Class Activation Maps (CAM) for a convolutional neural network (CNN). It is an improvement over the original Grad-CAM method, which uses only
+                            the feature maps of the last convolutional layer to generate the heat map. <br> GradCAM++ modifies the original Grad-CAM method by using a weighted combination of the gradients from multiple layers in the CNN to generate a
+                            heat map that highlights the regions in the image that are most important for the CNN to make its prediction for that class. <br>The main idea behind GradCAM++ is to incorporate information from all the layers in the CNN to
+                            obtain a more detailed and accurate heat map. To achieve this, the method first computes the gradient of the output class with respect to the feature maps of all the layers in the CNN, and then uses a combination of gradients
+                            (such as weighted average or element-wise product) to weight the feature maps. Finally, the feature maps are averaged to obtain a weight map that highlights the regions in the image that are most important for the CNN to make
+                            its prediction for that class. <br> GradCAM++ is particularly useful for understanding the decision-making process of a CNN because it allows us to see which regions of the image are important to the network's prediction, even
+                            when the final decision is made by layers deep in the network. <br> <strong>The localization map is computed as follows:</strong></p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+              <msubsup>
+                <mi>L</mi>
+                <mrow data-mjx-texclass="ORD">
+                  <mi>G</mi>
+                  <mi>r</mi>
+                  <mi>a</mi>
+                  <mi>d</mi>
+                  <mo>&#x2212;</mo>
+                  <mi>C</mi>
+                  <mi>A</mi>
+                  <mi>M</mi>
+                  <mo>+</mo>
+                  <mo>+</mo>
+                </mrow>
+                <mrow data-mjx-texclass="ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>c</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msubsup>
+              <mo stretchy="false">(</mo>
+              <mi>x</mi>
+              <mo>,</mo>
+              <mi>y</mi>
+              <mo stretchy="false">)</mo>
+              <mo>=</mo>
+              <munder>
+                <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                <mi>k</mi>
+              </munder>
+              <msubsup>
+                <mi>w</mi>
+                <mi>k</mi>
+                <mrow data-mjx-texclass="ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>c</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msubsup>
+              <msub>
+                <mi>A</mi>
+                <mi>k</mi>
+              </msub>
+              <mo stretchy="false">(</mo>
+              <mi>x</mi>
+              <mo>,</mo>
+              <mi>y</mi>
+              <mo stretchy="false">)</mo>
+            </math>
+                        <p>with the coefficient
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <msubsup>
+                  <mi>w</mi>
+                  <mi>k</mi>
+                  <mrow data-mjx-texclass="ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>c</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                </msubsup>
+              </math> being defined as</p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                  <msubsup>
+                    <mi>w</mi>
+                    <mi>k</mi>
+                    <mrow data-mjx-texclass="ORD">
+                      <mo stretchy="false">(</mo>
+                      <mi>c</mi>
+                      <mo stretchy="false">)</mo>
+                    </mrow>
+                  </msubsup>
+                  <mo>=</mo>
+                  <munderover>
+                    <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                    <mrow data-mjx-texclass="ORD">
+                      <mi>i</mi>
+                      <mo>=</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mi>H</mi>
+                  </munderover>
+                  <munderover>
+                    <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                    <mrow data-mjx-texclass="ORD">
+                      <mi>j</mi>
+                      <mo>=</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mi>W</mi>
+                  </munderover>
+                  <msubsup>
+                    <mi>&#x3B1;</mi>
+                    <mi>k</mi>
+                    <mrow data-mjx-texclass="ORD">
+                      <mo stretchy="false">(</mo>
+                      <mi>c</mi>
+                      <mo stretchy="false">)</mo>
+                    </mrow>
+                  </msubsup>
+                  <mo stretchy="false">(</mo>
+                  <mi>i</mi>
+                  <mo>,</mo>
+                  <mi>j</mi>
+                  <mo stretchy="false">)</mo>
+                  <mo>&#x22C5;</mo>
+                  <mi>R</mi>
+                  <mi>e</mi>
+                  <mi>L</mi>
+                  <mi>U</mi>
+                  <mrow data-mjx-texclass="ORD">
+                    <mo minsize="1.623em" maxsize="1.623em">(</mo>
+                  </mrow>
+                  <mfrac>
+                    <mrow>
+                      <mi>&#x2202;</mi>
+                      <msup>
+                        <mi>Y</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>c</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msup>
+                    </mrow>
+                    <mrow>
+                      <mi>&#x2202;</mi>
+                      <msub>
+                        <mi>A</mi>
+                        <mi>k</mi>
+                      </msub>
+                      <mo stretchy="false">(</mo>
+                      <mi>i</mi>
+                      <mo>,</mo>
+                      <mi>j</mi>
+                      <mo stretchy="false">)</mo>
+                    </mrow>
+                  </mfrac>
+                  <mrow data-mjx-texclass="ORD">
+                    <mo minsize="1.623em" maxsize="1.623em">)</mo>
+                  </mrow>
+                </math>
+                        <p>where
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <msub>
+                      <mi>A</mi>
+                      <mi>k</mi>
+                    </msub>
+                    <mo stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo>,</mo>
+                    <mi>y</mi>
+                    <mo stretchy="false">)</mo>
+                  </math> is the activation of node
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <mi>k</mi>
+                    </math> in the target layer of the model at position
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <mo stretchy="false">(</mo>
+                      <mi>x</mi>
+                      <mo>,</mo>
+                      <mi>y</mi>
+                      <mo stretchy="false">)</mo>
+                    </math> ,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <msup>
+                        <mi>Y</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>c</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msup>
+                    </math> is the model output score for class before softmax, and
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                      <msubsup>
+                        <mi>&#x3B1;</mi>
+                        <mi>k</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>c</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo stretchy="false">(</mo>
+                      <mi>i</mi>
+                      <mo>,</mo>
+                      <mi>j</mi>
+                      <mo stretchy="false">)</mo>
+                    </math> being defined as:</p>
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msubsup>
+                        <mi>&#x3B1;</mi>
+                        <mi>k</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>c</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo stretchy="false">(</mo>
+                      <mi>i</mi>
+                      <mo>,</mo>
+                      <mi>j</mi>
+                      <mo stretchy="false">)</mo>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mn>1</mn>
+                        <mrow>
+                          <munder>
+                            <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                            <mrow data-mjx-texclass="ORD">
+                              <mi>i</mi>
+                              <mo>,</mo>
+                              <mi>j</mi>
+                            </mrow>
+                          </munder>
+                          <mfrac>
+                            <mrow>
+                              <mi>&#x2202;</mi>
+                              <msup>
+                                <mi>Y</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                  <mo stretchy="false">(</mo>
+                                  <mi>c</mi>
+                                  <mo stretchy="false">)</mo>
+                                </mrow>
+                              </msup>
+                            </mrow>
+                            <mrow>
+                              <mi>&#x2202;</mi>
+                              <msub>
+                                <mi>A</mi>
+                                <mi>k</mi>
+                              </msub>
+                              <mo stretchy="false">(</mo>
+                              <mi>i</mi>
+                              <mo>,</mo>
+                              <mi>j</mi>
+                              <mo stretchy="false">)</mo>
+                            </mrow>
+                          </mfrac>
+                        </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mfrac>
+                          <mrow>
+                            <msup>
+                              <mi>&#x2202;</mi>
+                              <mn>2</mn>
+                            </msup>
+                            <msup>
+                              <mi>Y</mi>
+                              <mrow data-mjx-texclass="ORD">
+                                <mo stretchy="false">(</mo>
+                                <mi>c</mi>
+                                <mo stretchy="false">)</mo>
+                              </mrow>
+                            </msup>
+                          </mrow>
+                          <mrow>
+                            <mo stretchy="false">(</mo>
+                            <mi>&#x2202;</mi>
+                            <msub>
+                              <mi>A</mi>
+                              <mi>k</mi>
+                            </msub>
+                            <mo stretchy="false">(</mo>
+                            <mi>i</mi>
+                            <mo>,</mo>
+                            <mi>j</mi>
+                            <mo stretchy="false">)</mo>
+                            <msup>
+                              <mo stretchy="false">)</mo>
+                              <mn>2</mn>
+                            </msup>
+                          </mrow>
+                        </mfrac>
+                        <mrow>
+                          <mn>2</mn>
+                          <mo>&#x22C5;</mo>
+                          <mfrac>
+                            <mrow>
+                              <msup>
+                                <mi>&#x2202;</mi>
+                                <mn>2</mn>
+                              </msup>
+                              <msup>
+                                <mi>Y</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                  <mo stretchy="false">(</mo>
+                                  <mi>c</mi>
+                                  <mo stretchy="false">)</mo>
+                                </mrow>
+                              </msup>
+                            </mrow>
+                            <mrow>
+                              <mo stretchy="false">(</mo>
+                              <mi>&#x2202;</mi>
+                              <msub>
+                                <mi>A</mi>
+                                <mi>k</mi>
+                              </msub>
+                              <mo stretchy="false">(</mo>
+                              <mi>i</mi>
+                              <mo>,</mo>
+                              <mi>j</mi>
+                              <mo stretchy="false">)</mo>
+                              <msup>
+                                <mo stretchy="false">)</mo>
+                                <mn>2</mn>
+                              </msup>
+                            </mrow>
+                          </mfrac>
+                          <mo>+</mo>
+                          <munder>
+                            <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                            <mrow data-mjx-texclass="ORD">
+                              <mi>a</mi>
+                              <mo>,</mo>
+                              <mi>b</mi>
+                            </mrow>
+                          </munder>
+                          <msub>
+                            <mi>A</mi>
+                            <mi>k</mi>
+                          </msub>
+                          <mo stretchy="false">(</mo>
+                          <mi>a</mi>
+                          <mo>,</mo>
+                          <mi>b</mi>
+                          <mo stretchy="false">)</mo>
+                          <mo>&#x22C5;</mo>
+                          <mfrac>
+                            <mrow>
+                              <msup>
+                                <mi>&#x2202;</mi>
+                                <mn>3</mn>
+                              </msup>
+                              <msup>
+                                <mi>Y</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                  <mo stretchy="false">(</mo>
+                                  <mi>c</mi>
+                                  <mo stretchy="false">)</mo>
+                                </mrow>
+                              </msup>
+                            </mrow>
+                            <mrow>
+                              <mo stretchy="false">(</mo>
+                              <mi>&#x2202;</mi>
+                              <msub>
+                                <mi>A</mi>
+                                <mi>k</mi>
+                              </msub>
+                              <mo stretchy="false">(</mo>
+                              <mi>i</mi>
+                              <mo>,</mo>
+                              <mi>j</mi>
+                              <mo stretchy="false">)</mo>
+                              <msup>
+                                <mo stretchy="false">)</mo>
+                                <mn>3</mn>
+                              </msup>
+                            </mrow>
+                          </mfrac>
+                        </mrow>
+                      </mfrac>
+                    </math>
+                        <p>if
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <mfrac>
+                            <mrow>
+                              <mi>&#x2202;</mi>
+                              <msup>
+                                <mi>Y</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                  <mo stretchy="false">(</mo>
+                                  <mi>c</mi>
+                                  <mo stretchy="false">)</mo>
+                                </mrow>
+                              </msup>
+                            </mrow>
+                            <mrow>
+                              <mi>&#x2202;</mi>
+                              <msub>
+                                <mi>A</mi>
+                                <mi>k</mi>
+                              </msub>
+                              <mo stretchy="false">(</mo>
+                              <mi>i</mi>
+                              <mo>,</mo>
+                              <mi>j</mi>
+                              <mo stretchy="false">)</mo>
+                            </mrow>
+                          </mfrac>
+                          <mo>=</mo>
+                          <mn>1</mn>
+                          </math> else
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                          <mn>0</mn>
+                        </math>.
+                        </p>
+
+                        <br>
+                        <h5>How do I use this technique on an image?</h5>
+
+                        <h5>To load a GradCAMPlusPlus class:</h5>
+                        <h4>This technique have Two parameters:</h4>
+                        <ul>
+                            <li><strong>model: </strong>This parameter refers to the convolutional neural network (CNN) that is being used to make predictions.</li>
+                            <li><strong>target_layer: </strong>This parameter refers to the specific layer of the CNN that the gradients are computed with respect to.(Optional)</li>
+
+                        </ul>
+
+
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                              from tensorcam.GradCAMPP import GradCAMPlusPlus <br>
+                              from tensorflow.keras.applications import ResNet50  <br>
+                              import numpy as np  <br>
+                  model = ResNet50(weights='imagenet') <br>
+                  target_layer= 'conv5_block3_out' <br>          
+              </code>
+                        </div>
+                        <h5> This technique have 3 methods :</h5>
+                        <p> <strong>get_image: </strong> function takes the origenal image and retern the image as a numpy 2d array and the origenal image self.<br> <strong>compute_cam_features: </strong> function takes an input image,and returns the CAM
+                            heat map for that class.
+                            <br><strong>plot_images: </strong>that takes the origenal image , the heatmap and return the image with the heatmap.</p>
+
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                              image, orig = GradCAMPlusPlus.get_image('sample.jpg') <br>
+                              preds = model.predict(image) <br>
+                              class_idx = np.argmax(preds[0]) <br>
+                              gradcampp = GradCAMPlusPlus(model,class_idx,target_layer) <br>
+                              grad_heatmap = gradcampp.compute_cam_features(image) <br>
+                              gradcampp.plot_images(orig, grad_heatmap)  <br>
+              </code>
+                        </div>
+
+                        <img src="media/orig.png">
+                        <img src="media/grad++/heatmap.png">
+                        <img src="media/grad++/output.png">
+
+
+
+                    </section>
+
+    </main>
+
+    <footer class="footer-main bg-light">
+
+        <p class="copyright"><span>Made By </span><a href="https://uiuxassets.com/" target="_blank">Riots Team</a><span> - © 2022, all rights reserved.</span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>

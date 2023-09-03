@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Explainable AI</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Pretained Image Recognition Models.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon-precomposed" href="media/favicon.png">
+    <link rel="icon" href="media/favicon.png">
+    <link rel="mask-icon" href="media/favicon.svg" color="rgb(36,38,58)">
+    <link rel="shortcut icon" href="media/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="page page-style-guide preload">
+
+    <header class="header-main dark">
+        <nav>
+            <a href="index.html" class="logo" rel="home"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path d="M6.648 7.762c-.077-.11-.106-.245-.083-.376.024-.132.1-.248.21-.323l1.164-.8c1.536-1.076 3.406-1.486 5.25-1.16 3.82.673 6.373 4.32 5.704 8.113-.668 3.793-4.316 6.347-8.134 5.674-1.845-.326-3.462-1.35-4.485-2.813l-3.11-4.445c-.16-.23-.45-.33-.717-.245-.267.084-.45.33-.45.61C2 11.998 2 12 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2C8.94 2 6.202 3.374 4.368 5.538c-.735.86-.794 2.11-.146 3.036 1.475 2.136 4.138 5.942 4.138 5.942.675.965 1.685 1.605 2.852 1.81 2.396.424 4.684-1.168 5.107-3.564.42-2.396-1.185-4.674-3.58-5.097-1.167-.205-2.335.05-3.36.77-.84.585-1.994.38-2.58-.458l-.152-.215z" fill="currentColor"/></svg><span>Riots Team</span></a>
+            <div class="nav-toggle"></div>
+            <ul class="inline">
+                <li><a href="https://github.com/riotteams/tensorcam-" class="button button-primary button-m full-width-tablet" role="button">For GitHup Repositories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="bg-image-03 center dark overlay padding">
+            <div class="margin-bottom margin-top max-width-m">
+                <h1>Welcome</h1>
+                <p class="lead">Welcome to the TensorCAM documentation, a concise set of documentation that covers the basics of TensorCAM.</p>
+            </div>
+        </section>
+
+        <div class="padding">
+            <div class="row max-width-l">
+                <div class="col-one-fifth">
+                    <aside class="sidebar">
+                        <h6 class="sidebar-header">Explainable AI Methods</h6>
+
+                        <ul class="blank">
+
+                            <li><a href="index.html#getting-started">Getting Started</a></li>
+                            <li><a href="class-summaries.html#class-summaries">Class Summaries</a></li>
+                            <li><a href="cam.html#cam">CAM</a></li>
+                            <li><a href="grad-cam.html#grad-cam">GradCAM</a></li>
+                            <li><a href="hires-cam.html#hirescam">HiResCAM</a></li>
+                            <li><a href="grad-cam-element-wise.html#grad-cam-element-wise">GradCAMElementWise</a></li>
+                            <li><a href="grad-cam-plusplus.html#grad-cam-plusplus">GradCAM++</a></li>
+                            <li><a href="xgrad.html#xgrad-cam">XGradCAM</a></li>
+                            <li><a href="score-cam.html#score-cam">ScoreCAM</a></li>
+                            <li><a href="layer-cam.html#layer-cam">LayerCAM</a></li>
+                            <li><a href="ablation-cam.html#ablation-cam">Ablation-CAM	</a></li>
+                            <li><a href="fullgrad.html#fullgrad-cam">FullGrad-CAM	</a></li>
+                            <li><a href="SmoothGradCAM.html#SmoothGradCAM">SmoothGradCAM</a></li>
+                            <li><a href="smoothgradcampp.html#smoothgradcampp">smoothgradcampp </a></li>
+                            <li><a href="SmoothHiresCAM.html#SmoothHiresCAM">SmoothHiresCAM	</a></li>
+                            <li><a href="SmoothElementWise.html#SmoothElementWise">SmoothElementWise</a></li>
+                        </ul>
+
+                    </aside>
+                </div>
+                <div class="col-four-fifths">
+
+                    <section id="fullgrad-cam" class="anchor">
+
+                        <h4>Full Grad</h4>
+                        <p class="paragraph">We introduce a new tool for interpreting neural net responses, namely full-gradients, which decomposes the neural net response into input sensitivity and per-neuron sensitivity components. This is the first proposed representation
+                            which satisfies two key properties: completeness and weak dependence, which provably cannot be satisfied by any saliency map-based interpretability method. For convolutional nets, we also propose an approximate saliency map
+                            representation, called FullGrad, obtained by aggregating the full-gradient components</p>
+                        <p>Let
+                            <math>
+                  <mi>f</mi>
+                  </math>be a <math>
+                    <mrow>
+                    <mi>R</mi>
+                    <mi>e</mi>
+                    <mi>L</mi>
+                    <mi>U</mi>
+                  </mrow>
+                </math> neural network without bias parameters</p>
+                        <math display="block">
+                  <mrow>
+                    <mi>f</mi>
+                    <mo form="prefix" stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo form="postfix" stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <msub>
+                      <mi>∇</mi>
+                      <mi>x</mi>
+                    </msub>
+                    <mi>f</mi>
+                    <mo form="prefix" stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <msup>
+                      <mo form="postfix" stretchy="false">)</mo>
+                      <mi>T</mi>
+                    </msup>
+                    <mi>x</mi>
+                    <mi>.</mi>
+                  </mrow>
+                </math>
+                        <p>Let<math>
+                  <mi>f</mi>
+                  </math>be a <math>
+                    <mrow>
+                    <mi>R</mi>
+                    <mi>e</mi>
+                    <mi>L</mi>
+                    <mi>U</mi>
+                  </mrow>
+                </math> neural network with biases
+                            <math>
+                  <mrow>
+                    <mi>b</mi>
+                    <mo>∈</mo>
+                    <msup>
+                      <mi>R</mi>
+                      <mi>F</mi>
+                    </msup>
+                  </mrow>
+                </math>, then</p>
+                        <math display="block">
+                <mrow>
+                  <mi>f</mi>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mi>x</mi>
+                  <mo separator="true">;</mo>
+                  <mi>b</mi>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>=</mo>
+                  <msub>
+                    <mi>∇</mi>
+                    <mi>x</mi>
+                  </msub>
+                    <mrow>
+                      <mi>f</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>x</mi>
+                      <mo separator="true">;</mo>
+                      <mi>b</mi>
+                      <msup>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mi>T</mi>
+                      </msup>
+                    </mrow>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <msub>
+                    <mi>∇</mi>
+                    <mi>b</mi>
+                  </msub>
+                    <mrow>
+                      <mi>f</mi>
+                      <mo form="prefix" stretchy="false">(</mo>
+                      <mi>x</mi>
+                      <mo separator="true">;</mo>
+                      <mi>b</mi>
+                      <msup>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mi>T</mi>
+                      </msup>
+                    </mrow>
+                  <mi>b</mi>
+                </mrow>
+              </math>
+                        <p>We can also similarly visualize approximate network-wide saliency maps by aggregating such layerwise maps. Let
+                            <math>
+                  <mi>c</mi>
+                </math> run across channels
+                            <math>
+                   <mrow>
+                     <mi>c</mi>
+                     <mn>1</mn>
+                   </mrow>
+                 </math> of a layer
+                            <math>
+                   <mi>l</mi>
+                 </math> in a neural network, then the FullGrad saliency map
+                            <math>
+                <mrow>
+                  <msub>
+                    <mi>S</mi>
+                    <mi>f</mi>
+                  </msub>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mi>x</mi>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+              </math>is given by</p>
+                        <math display="block">
+                <mrow>
+                  <mrow>
+                    <msub>
+                      <mi>S</mi>
+                      <mi>f</mi>
+                    </msub>
+                    <mo form="prefix" stretchy="false">(</mo>
+                    <mi>x</mi>
+                    <mo form="postfix" stretchy="false">)</mo>
+                  </mrow>
+                  <mo>=</mo>
+                  <mi>ψ</mi>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mrow>
+                    <msub>
+                      <mi>∇</mi>
+                      <mi>x</mi>
+                    </msub>
+                  </mrow>
+                  <mi>f</mi>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mi>x</mi>
+                  <mo form="postfix" stretchy="false">)</mo>
+                  <mo>&#x22C5;</mo>
+                  <mi>x</mi>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+                  <mo>+</mo>
+                    <munderover>
+                      <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                      <mrow data-mjx-texclass="ORD">
+                          <mrow>
+                            <mi>l</mi>
+                            <mo>∈</mo>
+                            <mi>L</mi>
+                          </mrow>
+                      </mrow>
+                      <mi></mi>
+                    </munderover>
+                    <munderover>
+                      <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+                      <mrow data-mjx-texclass="ORD">
+                          <mrow>
+                            <mi>c</mi>
+                            <mo>∈</mo>
+                            <msub>
+                              <mi>c</mi>
+                              <mi>l</mi>
+                            </msub>
+                          </mrow>
+                      </mrow>
+                      <mi></mi>
+                    </munderover>
+                      <mrow>
+                        <mi>ψ</mi>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <msup>
+                          <mi>f</mi>
+                          <mi>b</mi>
+                        </msup>
+                        <mo form="prefix" stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <msub>
+                        <mo form="postfix" stretchy="false">)</mo>
+                        <mi>c</mi>
+                      </msub>
+                        <mo form="postfix" stretchy="false">)</mo>
+                      </mrow>
+              </math>
+                        <h5>How do I use this technique on an image?</h5>
+                        <br>
+                        <h5>To load a Full Grad class:</h5>
+                        <h4>This technique have four parameters:</h4>
+                        <ul>
+                            <li><strong>base_model: </strong>Input Model To Compute The FullGradCAM </li>
+                            <li><strong>num_classes : </strong>The Number Of Feature Classes (default =1000 & Opitonal Parameter)</li>
+                            <li><strong>class_names : </strong>The Name Of The Feature Classes (default = None) </li>
+                            <li>
+                                <strong>verbose :</strong> The Choice That How You Want To See The Output Of Your Nural Network While It's Training(default=False)</li>
+                        </ul>
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                import numpy as np <br>
+                from tensorflow.keras.applications import ResNet50  <br>
+                import ast  <br>
+                from tensorcam.FullGrad import FullGrad <br>
+                img_path = 'sheep.jpg' <br>
+                with open('imagenet1000_clsidx_to_labels.txt') as imagenet_classes_file: <br>
+                imagenet_classes_dict = ast.literal_eval(imagenet_classes_file.read()) <br>
+                base_model=ResNet50(weights='imagenet') <br>
+                input_=np.ones(shape=(1,base_model.layers[0].input_shape[0][1],base_model.layers[0].input_shape[0][2],base_model.layers[0].input_shape[0][3])).astype(np.float32) <br>
+                fullgrad=FullGrad(base_model) <br>
+                fullgrad.checkCompleteness(input_) <br>
+                fullgrad=FullGrad(base_model,class_names=imagenet_classes_dict) <br>
+              </code>
+                        </div>
+                        <h4> This technique have Four methods :</h4>
+                        <p><strong>get_image: </strong> that takes the original image and retern the image as a numpy 2d array and the origenal image self.<br> <strong>saliency: </strong>get the full grad saliency <br> <strong>postprocess_saliency_map: </strong>merge
+                            the original image and heatmap
+                            <br> <strong>plot_images: </strong>show the original image,heatmap, image with the heatmap
+                        </p>
+
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                          orig,img = fullgrad.get_image(img_path) <br>
+                          cam=fullgrad.saliency(img) <br>
+                          cam=fullgrad.postprocess_saliency_map(cam[0]) <br>
+                          fullgrad.plotimage(orig,cam)
+              </code>
+                        </div>
+
+                        <img src="media/origp.png">
+                        <img src="media/fullgrad/heatmap.png">
+                        <img src="media/fullgrad/output.png">
+
+
+
+                    </section>
+
+    </main>
+
+    <footer class="footer-main bg-light">
+
+        <p class="copyright"><span>Made By </span><a href="https://uiuxassets.com/" target="_blank">Riots Team</a><span> - © 2022, all rights reserved.</span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>

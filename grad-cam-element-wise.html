@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Explainable AI</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Pretained Image Recognition Models.">
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon-precomposed" href="media/favicon.png">
+    <link rel="icon" href="media/favicon.png">
+    <link rel="mask-icon" href="media/favicon.svg" color="rgb(36,38,58)">
+    <link rel="shortcut icon" href="media/favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="page page-style-guide preload">
+
+    <header class="header-main dark">
+        <nav>
+            <a href="index.html" class="logo" rel="home"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path d="M6.648 7.762c-.077-.11-.106-.245-.083-.376.024-.132.1-.248.21-.323l1.164-.8c1.536-1.076 3.406-1.486 5.25-1.16 3.82.673 6.373 4.32 5.704 8.113-.668 3.793-4.316 6.347-8.134 5.674-1.845-.326-3.462-1.35-4.485-2.813l-3.11-4.445c-.16-.23-.45-.33-.717-.245-.267.084-.45.33-.45.61C2 11.998 2 12 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10S17.523 2 12 2C8.94 2 6.202 3.374 4.368 5.538c-.735.86-.794 2.11-.146 3.036 1.475 2.136 4.138 5.942 4.138 5.942.675.965 1.685 1.605 2.852 1.81 2.396.424 4.684-1.168 5.107-3.564.42-2.396-1.185-4.674-3.58-5.097-1.167-.205-2.335.05-3.36.77-.84.585-1.994.38-2.58-.458l-.152-.215z" fill="currentColor"/></svg><span>Riots Team</span></a>
+            <div class="nav-toggle"></div>
+            <ul class="inline">
+                <li><a href="https://github.com/riotteams/tensorcam-" class="button button-primary button-m full-width-tablet" role="button">For GitHup Repositories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="bg-image-03 center dark overlay padding">
+            <div class="margin-bottom margin-top max-width-m">
+                <h1>Welcome</h1>
+                <p class="lead">Welcome to the TensorCAM documentation, a concise set of documentation that covers the basics of TensorCAM.</p>
+            </div>
+        </section>
+
+        <div class="padding">
+            <div class="row max-width-l">
+                <div class="col-one-fifth">
+                    <aside class="sidebar">
+                        <h6 class="sidebar-header">Explainable AI Methods</h6>
+
+                        <ul class="blank">
+
+                            <li><a href="index.html#getting-started">Getting Started</a></li>
+                            <li><a href="class-summaries.html#class-summaries">Class Summaries</a></li>
+                            <li><a href="cam.html#cam">CAM</a></li>
+                            <li><a href="grad-cam.html#grad-cam">GradCAM</a></li>
+                            <li><a href="hires-cam.html#hirescam">HiResCAM</a></li>
+                            <li><a href="grad-cam-element-wise.html#grad-cam-element-wise">GradCAMElementWise</a></li>
+                            <li><a href="grad-cam-plusplus.html#grad-cam-plusplus">GradCAM++</a></li>
+                            <li><a href="xgrad.html#xgrad-cam">XGradCAM</a></li>
+                            <li><a href="score-cam.html#score-cam">ScoreCAM</a></li>
+                            <li><a href="layer-cam.html#layer-cam">LayerCAM</a></li>
+                            <li><a href="ablation-cam.html#ablation-cam">Ablation-CAM	</a></li>
+                            <li><a href="fullgrad.html#fullgrad-cam">FullGrad-CAM	</a></li>
+                            <li><a href="SmoothGradCAM.html#SmoothGradCAM">SmoothGradCAM</a></li>
+                            <li><a href="smoothgradcampp.html#smoothgradcampp">smoothgradcampp </a></li>
+                            <li><a href="SmoothHiresCAM.html#SmoothHiresCAM">SmoothHiresCAM	</a></li>
+                            <li><a href="SmoothElementWise.html#SmoothElementWise">SmoothElementWise</a></li>
+                        </ul>
+
+                    </aside>
+                </div>
+                <div class="col-four-fifths">
+
+                    <section id="grad-cam-element-wise" class="anchor">
+
+                        <h4>GradCAMElementWise</h4>
+                        <p class="paragraph">
+                            GradCAM Element-wise (GradCAM-Elem) is a variation of the Gradient-weighted Class Activation Mapping (GradCAM) technique, used to generate Class Activation Maps (CAM) for a convolutional neural network (CNN). It is an improvement over the original GradCAM
+                            method, which uses only the feature maps of the last convolutional layer to generate the heat map. <br> GradCAM-Elem modifies the original GradCAM method by using an element-wise product between
+                            the gradients and the feature maps, instead of taking the dot-product. This allows the method to incorporate information from all the layers in the CNN to obtain a more detailed and accurate heat map. <br> The main idea behind
+                            GradCAM-Elem is to obtain a weight map that highlights the regions in the image that are most important for the CNN to make its prediction for that class. To achieve this, the method first computes the gradient of the output
+                            class with respect to the feature maps of all the layers in the CNN. Then, it uses an element-wise product to weight the feature maps. Finally, the feature maps are averaged to obtain a weight map. <br> GradCAM-Elem is particularly
+                            useful for understanding the decision-making process of a CNN because it allows us to see which regions of the image are important to the network's prediction, even when the final decision is made by layers deep in the network.
+                            <br></p>
+                        <br>
+                        <h5>How do I use this technique on an image?</h5>
+                        <h5>To load a GradCAMElementWise class:</h5>
+                        <h4>This technique have Two parameters:</h4>
+                        <ul>
+                            <li><strong>model: </strong>This parameter refers to the convolutional neural network (CNN) that is being used to make predictions.</li>
+                            <li><strong>target_layer: </strong>This parameter refers to the specific layer of the CNN that the gradients are computed with respect to.(Optional)</li>
+                        </ul>
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                                from tensorcam.GradCAMElemnetWise import GradCAMElementWise<br>
+                                    from tensorflow.keras.applications import ResNet50<br>
+                                    model = ResNet50(weights='imagenet') <br>
+                                    target_layer= 'conv5_block3_out' <br>
+              </code>
+                        </div>
+                        <h4> This technique have Three methods :</h4>
+                        <p> <strong>get_image: </strong> function takes the origenal image and retern the image as a numpy 2d array and the origenal image self.<br> <strong>compute_cam_features: </strong> function takes an input image,and returns the CAM
+                            heat map for that class.
+                            <br><strong>plot_images: </strong>that takes the origenal image , the heatmap and return the image with the heatmap.</p>
+
+                        <div class="code-markup">
+                            <span class="code-header"></span>
+                            <code class="code-snippet">
+                                image, orig = GradCAMElementWise.get_image('sample.jpg') <br>
+                                preds = model.predict(image)   <br>
+                                prediction = np.argmax(preds[0])  <br>
+                                gradelementwirse  = GradCAMElementWise(model,prediction,target_layer)  <br>
+                                grad_heatmap = gradelementwirse .compute_cam_features(image) <br>
+                                gradelementwirse .plot_images(orig, grad_heatmap)  <br>
+              </code>
+                        </div>
+
+                        <img src="media/orig.png">
+                        <img src="media/elementwise/heatmap.png">
+                        <img src="media/elementwise/cam.png">
+
+
+
+                    </section>
+
+    </main>
+
+    <footer class="footer-main bg-light">
+
+        <p class="copyright"><span>Made By </span><a href="https://uiuxassets.com/" target="_blank">Riots Team</a><span> - © 2022, all rights reserved.</span></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>
